@@ -3,9 +3,9 @@
 A sleek, modern React Native (Expo) application to keep track of all your active subscriptions, calculate monthly costs, and gain insights into your spending habits. Built with performance and aesthetics in mind.
 
 <p align="center">
-  <img src="./assets/githubpics/Home-page.jpg" width="30%" alt="Home Page" />
+  <img src="assets/githubpics/Home-page.jpg" width="30%" alt="Home Page" />
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  <img src="./assets/githubpics/Sign-in.jpg" width="30%" alt="Sign In Page" />
+  <img src="assets/githubpics/Sign-in.jpg" width="30%" alt="Sign In Page" />
 </p>
 
 ## ✨ Features
