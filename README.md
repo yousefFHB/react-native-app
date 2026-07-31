@@ -1,50 +1,100 @@
-# Welcome to your Expo app 👋
+# 📱 Subscription Tracker App
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+A sleek, modern React Native (Expo) application to keep track of all your active subscriptions, calculate monthly costs, and gain insights into your spending habits. Built with performance and aesthetics in mind.
 
-## Get started
+<p align="center">
+  <img src="./assets/githubpics/Home-page.jpg" width="30%" alt="Home Page" />
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <img src="./assets/githubpics/Sign-in.jpg" width="30%" alt="Sign In Page" />
+</p>
 
-1. Install dependencies
+## ✨ Features
 
-   ```bash
-   npm install
-   ```
+- **Dashboard:** Instantly see your total monthly subscription costs and upcoming renewals.
+- **Subscription Management:** Easily add new subscriptions (e.g., Spotify, Adobe, Developer Tools).
+- **Insights & Analytics:** Beautiful charts and graphs powered by `react-native-gifted-charts` showing where your money goes.
+- **Secure Authentication:** Fully integrated authentication flow using Clerk.
+- **Modern UI:** Designed with NativeWind (Tailwind CSS) for a stunning, responsive, and cross-platform user interface.
+- **Smooth Animations:** Built-in React Native `LayoutAnimation` and `react-native-reanimated` for delightful micro-interactions.
+- **Global State:** Uses Zustand for blazing fast and effortless state management.
 
-2. Start the app
+## 🛠️ Tech Stack
 
-   ```bash
-   npx expo start
-   ```
+- **Framework:** React Native with Expo Router
+- **Styling:** NativeWind (TailwindCSS for React Native)
+- **State Management:** Zustand
+- **Authentication:** Clerk (`@clerk/expo`)
+- **Charts:** `react-native-gifted-charts`
+- **Animations:** React Native Reanimated
 
-In the output, you'll find options to open the app in a
+## 🔐 Authentication (Clerk)
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+This project leverages **Clerk** for robust, secure, and seamless authentication. The authentication flow is completely set up out of the box with custom UI screens matching the app's dark premium aesthetic.
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+### How it works:
+- **Sign In / Sign Up:** Dedicated screens allow users to log in or register securely.
+- **Protected Routes:** The main app (Tabs) is wrapped in Clerk's `<SignedIn>` and `<SignedOut>` components (via Expo Router's Layout). If a user is not authenticated, they are automatically redirected to the Sign In page.
+- **Session Management:** Clerk handles token refreshes, session persistence, and securely caches credentials using `expo-secure-store`.
 
-## Get a fresh project
+To make auth work on your local machine, you **must** configure your Clerk API keys (see setup instructions).
 
-When you're ready, run:
+## 🚀 Setup & Installation
 
+Follow these instructions to get a local copy up and running.
+
+### Prerequisites
+- Node.js (v18 or newer recommended)
+- npm, yarn, pnpm, or bun
+- Expo Go app on your physical device, or an iOS Simulator / Android Emulator installed.
+
+### 1. Clone the repository
 ```bash
-npm run reset-project
+git clone https://github.com/yourusername/subscription-tracker.git
+cd subscription-tracker
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+### 2. Install Dependencies
+```bash
+npm install
+```
 
-## Learn more
+### 3. Configure Clerk (Environment Variables)
+You need your own Clerk Publishable Key to run the app.
+1. Go to [Clerk Dashboard](https://dashboard.clerk.com/) and create a new application.
+2. Select the authentication strategies you want (Email/Password, Google, etc.).
+3. Copy your **Publishable Key**.
+4. Create a `.env` file in the root of your project:
+```bash
+touch .env
+```
+5. Add your key to the `.env` file:
+```env
+EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY=pk_test_your_key_here...
+```
 
-To learn more about developing your project with Expo, look at the following resources:
+### 4. Run the Application
+Start the Expo development server:
+```bash
+npx expo start --clear
+```
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+- Press **`i`** to open in iOS Simulator.
+- Press **`a`** to open in Android Emulator.
+- Or scan the QR code using the **Expo Go** app on your physical device.
 
-## Join the community
+## 📂 Project Structure
 
-Join our community of developers creating universal apps.
+```text
+├── app/                  # Expo Router file-based navigation (Tabs, Auth, Layouts)
+├── assets/               # Images, Icons, and Fonts (including Github showcase pics)
+├── components/           # Reusable UI components (Modals, Cards, Charts)
+├── constants/            # Global constants, Zustand store, Theme configs
+├── context/              # React Context providers
+├── lib/                  # Utility functions and helper scripts
+├── global.css            # NativeWind global stylesheet and design tokens
+└── .env                  # Environment variables (Ignored in Git)
+```
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+## 📝 License
+
+Distributed under the MIT License. See `LICENSE` for more information.
