@@ -1,4 +1,5 @@
 import "@/global.css";
+import { useUser } from "@clerk/expo";
 import { Link } from "expo-router";
 import React, { useState } from "react";
 import { FlatList, Image, Text, View } from "react-native";
@@ -8,7 +9,6 @@ import images from "@/constants/images";
 import {
   HOME_BALANCE,
   HOME_SUBSCRIPTIONS,
-  HOME_USER,
   UPCOMING_SUBSCRIPTIONS,
 } from "@/constants/data";
 import { icons } from "@/constants/icons";
@@ -19,6 +19,14 @@ import UpComingSeubscriptionsCard from "@/components/UpComingSeubscriptionsCard"
 import SubscriptionCard from "@/components/SubscriptionCard";
 const SafeAreaView = styled(RNSafeAreaView);
 export default function App() {
+  const { user } = useUser();
+  const displayName =
+    user?.firstName && user?.lastName
+      ? `${user.firstName} ${user.lastName}`
+      : user?.firstName || "کاربر";
+
+  const avatarSource = user?.imageUrl ? { uri: user.imageUrl } : images.avatar;
+
   const [expandedSubscriptionId, setExpandedSubscriptionId] = useState<
     string | null
   >(null);
@@ -32,8 +40,8 @@ export default function App() {
           <>
             <View className="home-header">
               <View className="home-user">
-                <Image className="home-avatar " source={images.avatar} />
-                <Text className="home-user-name">{HOME_USER.name}</Text>
+                <Image className="home-avatar " source={avatarSource} />
+                <Text className="home-user-name">{displayName}</Text>
               </View>
               <Image source={icons.add} className="home-add-icon"></Image>
             </View>

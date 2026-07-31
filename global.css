@@ -17,7 +17,7 @@
   --color-destructive: #dc2626;
   --color-subscription: #8fd1bd;
   --color-redBLaze: #c1121f;
-  --color-cream:#FEF0D5;
+  --color-cream: #FEF0D5;
 
   --fonts-sans: "sans-regular";
   --fonts-sans-light: "sans-light";
@@ -74,7 +74,7 @@
   }
 
   .tabs-active {
-    @apply bg-accent;
+    @apply bg-redBLaze;
   }
 
   .tabs-glyph {
@@ -126,7 +126,7 @@
   }
 
   .list-title {
-    @apply text-2xl font-vazir font-bold  text-primary;
+    @apply text-2xl font-vazir font-bold text-primary;
   }
 
   .list-action {
@@ -270,7 +270,7 @@
   }
 
   .auth-logo-mark {
-    @apply relative size-14 items-center justify-center rounded-2xl bg-accent;
+    @apply relative size-14 items-center justify-center rounded-2xl;
   }
 
   .auth-logo-mark-text {
@@ -278,19 +278,19 @@
   }
 
   .auth-wordmark {
-    @apply text-3xl font-sans-extrabold text-primary;
+    @apply text-3xl font-rezvan text-primary;
   }
 
   .auth-wordmark-sub {
-    @apply -mt-1 text-xs font-sans-semibold uppercase tracking-[1px] text-muted-foreground;
+    @apply -mt-1 text-xs font-vazir uppercase tracking-[1px] text-muted-foreground;
   }
 
   .auth-title {
-    @apply text-3xl font-sans-bold text-primary;
+    @apply text-3xl mt-5 font-vazir text-primary;
   }
 
   .auth-subtitle {
-    @apply mt-2 max-w-[320px] text-center text-base font-sans-medium text-muted-foreground;
+    @apply mt-2 max-w-[320px] text-center text-base font-vazir text-muted-foreground;
   }
 
   .auth-card {
@@ -306,11 +306,11 @@
   }
 
   .auth-label {
-    @apply text-sm font-sans-semibold text-primary;
+    @apply text-sm font-vazir text-primary;
   }
 
   .auth-input {
-    @apply rounded-2xl border border-border bg-background px-4 py-4 text-base font-sans-medium text-primary;
+    @apply rounded-2xl border border-border bg-background px-4 py-4 text-base font-vazir text-primary;
   }
 
   .auth-input-error {
@@ -318,23 +318,23 @@
   }
 
   .auth-error {
-    @apply text-xs font-sans-medium text-destructive;
+    @apply text-xs font-vazir text-destructive;
   }
 
   .auth-helper {
-    @apply text-sm font-sans-medium text-muted-foreground;
+    @apply text-sm font-vazir text-muted-foreground;
   }
 
   .auth-button {
-    @apply mt-1 items-center rounded-2xl bg-accent py-4;
+    @apply mt-1 items-center rounded-2xl bg-redBLaze/45 py-4;
   }
 
   .auth-button-disabled {
-    @apply bg-accent/45;
+    @apply bg-redBLaze/45;
   }
 
   .auth-button-text {
-    @apply text-base font-sans-bold text-primary;
+    @apply text-base font-vazir text-redBLaze;
   }
 
   .auth-secondary-button {
@@ -342,7 +342,7 @@
   }
 
   .auth-secondary-button-text {
-    @apply text-sm font-sans-semibold text-accent;
+    @apply text-sm font-vazir text-redBLaze;
   }
 
   .auth-divider-row {
@@ -350,11 +350,11 @@
   }
 
   .auth-divider-line {
-    @apply h-px flex-1 bg-border;
+    @apply h-px flex-1 bg-white;
   }
 
   .auth-divider-text {
-    @apply text-[11px] font-sans-semibold uppercase tracking-[1px] text-muted-foreground;
+    @apply text-[11px] font-vazir uppercase tracking-[1px] text-white;
   }
 
   .auth-link-row {
@@ -362,11 +362,11 @@
   }
 
   .auth-link-copy {
-    @apply text-sm font-sans-medium text-muted-foreground;
+    @apply text-sm font-rezvan text-white;
   }
 
   .auth-link {
-    @apply text-sm font-sans-bold text-accent;
+    @apply text-sm font-rezvan text-redBLaze;
   }
 
   .modal-overlay {
@@ -435,5 +435,49 @@
 
   .category-chip-text-active {
     @apply text-accent;
+  }
+
+  .auth-input-wrap {
+    @apply relative;
+  }
+
+  .auth-password-toggle {
+    @apply absolute right-4 top-4 size-6 items-center justify-center;
+  }
+
+  .auth-password-toggle-text {
+    @apply text-xs font-rezvan text-white;
+  }
+
+  .auth-code-input {
+    @apply rounded-2xl border border-border bg-background px-4 py-4 text-center text-2xl font-vazir tracking-[8px] text-primary;
+  }
+
+  .auth-loading {
+    @apply flex-1 items-center justify-center bg-background;
+  }
+
+  .auth-button-text-light {
+    @apply text-base font-vazir text-background;
+  }
+
+  .auth-resend-row {
+    @apply mt-4 flex-row items-center justify-center gap-1;
+  }
+
+  .auth-resend-text {
+    @apply text-sm font-vazir text-muted-foreground;
+  }
+
+  .auth-resend-link {
+    @apply text-sm font-vazir text-accent;
+  }
+
+  .auth-error-banner {
+    @apply mb-3 rounded-xl bg-destructive/10 px-4 py-3;
+  }
+
+  .auth-error-banner-text {
+    @apply text-sm font-vazir text-destructive;
   }
 }
