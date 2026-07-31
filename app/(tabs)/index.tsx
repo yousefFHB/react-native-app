@@ -1,22 +1,27 @@
-import "@/global.css";
-import { useUser } from "@clerk/expo";
-import { Link } from "expo-router";
-import React, { useState } from "react";
-import { FlatList, Image, Text, View } from "react-native";
-import { styled } from "nativewind";
-import { SafeAreaView as RNSafeAreaView } from "react-native-safe-area-context";
-import images from "@/constants/images";
+import CreateSubscriptionModal from "@/components/CreateSubscriptionModal";
+import ListHeading from "@/components/ListHeading";
+import SubscriptionCard from "@/components/SubscriptionCard";
+import UpComingSeubscriptionsCard from "@/components/UpComingSeubscriptionsCard";
 import {
   HOME_BALANCE,
-  HOME_SUBSCRIPTIONS,
-  UPCOMING_SUBSCRIPTIONS,
+  UPCOMING_SUBSCRIPTIONS
 } from "@/constants/data";
-import { icons } from "@/constants/icons";
+import images from "@/constants/images";
+import { useSubscriptionStore } from "@/constants/store";
+import "@/global.css";
 import { formatCurrency } from "@/lib/utils";
+import { useUser } from "@clerk/expo";
 import dayjs from "dayjs";
-import ListHeading from "@/components/ListHeading";
-import UpComingSeubscriptionsCard from "@/components/UpComingSeubscriptionsCard";
-import SubscriptionCard from "@/components/SubscriptionCard";
+import { Plus } from "lucide-react-native";
+import { styled } from "nativewind";
+import React, { useState } from "react";
+import { FlatList, Image, LayoutAnimation, Pressable, Text, View } from "react-native";
+import Animated, {
+  useAnimatedStyle,
+  useSharedValue,
+  withSpring,
+} from "react-native-reanimated";
+import { SafeAreaView as RNSafeAreaView } from "react-native-safe-area-context";
 const SafeAreaView = styled(RNSafeAreaView);
 export default function App() {
   const { user } = useUser();
@@ -30,6 +35,13 @@ export default function App() {
   const [expandedSubscriptionId, setExpandedSubscriptionId] = useState<
     string | null
   >(null);
+  const [isModalVisible, setModalVisible] = useState(false);
+  const { subscriptions, addSubscription } = useSubscriptionStore();
+  const scale = useSharedValue(1);
+
+  const animatedStyle = useAnimatedStyle(() => ({
+    transform: [{ scale: scale.value }],
+  }));
   return (
     <SafeAreaView
       style={{ direction: "rtl" }}
@@ -43,7 +55,20 @@ export default function App() {
                 <Image className="home-avatar " source={avatarSource} />
                 <Text className="home-user-name">{displayName}</Text>
               </View>
-              <Image source={icons.add} className="home-add-icon"></Image>
+              <Animated.View style={animatedStyle}>
+                <Pressable
+                  className="home-add-icon items-center justify-center rounded-full bg-primary"
+                  onPressIn={() => {
+                    scale.value = withSpring(0.88);
+                  }}
+                  onPressOut={() => {
+                    scale.value = withSpring(1);
+                  }}
+                  onPress={() => setModalVisible(true)}
+                >
+                  <Plus size={24} color="#fff9e3" strokeWidth={2.5} />
+                </Pressable>
+              </Animated.View>
             </View>
             <View className="home-balance-card ">
               <Text className="home-balance-label">موجودی</Text>
@@ -75,16 +100,17 @@ export default function App() {
           </>
         )}
         showsVerticalScrollIndicator={false}
-        data={HOME_SUBSCRIPTIONS}
+        data={subscriptions}
         keyExtractor={(item) => item.id}
         renderItem={({ item }) => (
           <SubscriptionCard
             expanded={expandedSubscriptionId === item.id}
-            onPress={() =>
+            onPress={() => {
+              LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
               setExpandedSubscriptionId((currentId) =>
                 currentId === item.id ? null : item.id,
-              )
-            }
+              );
+            }}
             {...item}
           />
         )}
@@ -95,6 +121,11 @@ export default function App() {
         }
         contentContainerClassName="pb-30"
       ></FlatList>
+      <CreateSubscriptionModal
+        visible={isModalVisible}
+        onClose={() => setModalVisible(false)}
+        onAddSubscription={addSubscription}
+      />
     </SafeAreaView>
   );
 }

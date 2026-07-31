@@ -385,7 +385,7 @@ function SectionTitle({
     <View className="mb-3 flex-row items-center gap-2">
       {icon}
 
-      <Text className="font-vazir text-sm font-bold text-primary">
+      <Text className="font-vazir text-sm  text-primary">
         {title}
       </Text>
     </View>
@@ -420,7 +420,7 @@ function InfoRow({
 
         <Text
           numberOfLines={1}
-          className="mt-0.5 font-vazir text-sm font-semibold text-white"
+          className="mt-0.5 font-vazir text-sm  text-white"
         >
           {value}
         </Text>

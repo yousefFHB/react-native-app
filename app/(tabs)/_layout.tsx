@@ -1,12 +1,20 @@
 import { tabs } from "@/constants/data";
 import { Tabs } from "expo-router";
-import { Image, View } from "react-native";
+import { Image, View, Platform, UIManager } from "react-native";
 import { colors, components } from "@/constants/theme";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 // eslint-disable-next-line import/no-named-as-default
 import clsx from "clsx";
 
 const tabBar = components.tabBar;
+
+if (
+  Platform.OS === 'android' &&
+  UIManager.setLayoutAnimationEnabledExperimental
+) {
+  UIManager.setLayoutAnimationEnabledExperimental(true);
+}
+
 const TabLayout = () => {
   const insets = useSafeAreaInsets();
   const TabIcon = ({ focused, icon }: TabIconProps) => {
