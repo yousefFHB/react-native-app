@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "React-native-app",
-    "slug": "React-native-app",
+    "name": "react-native-app",
+    "slug": "react-native-app",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
@@ -63,7 +63,6 @@
             "./assets/fonts/Atila.ttf",
             "./assets/fonts/A-Mosalas.ttf",
             "./assets/fonts/Btitr.ttf",
-            
           ]
         }
       ]
