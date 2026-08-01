@@ -53,16 +53,14 @@
             "./assets/fonts/PlusJakartaSans-Medium.ttf",
             "./assets/fonts/PlusJakartaSans-ExtraBold.ttf",
             "./assets/fonts/PlusJakartaSans-Light.ttf",
-            "./assets/fonts/PlusJakartaSans-ExtraLight.ttf",
-            "./assets/fonts/Vazirmatn-regular.ttf",
-            "./assets/fonts/Vazirmatn-regular.ttf",
-            "./assets/fonts/Vazirmatn-regular.otf",
-            "./assets/fonts/Vazirmatn-regular.woff",
-            "./assets/fonts/Vazirmatn-regular.woff2",
+            "./assets/fonts/Vazirmatn-Regular.ttf",
+            "./assets/fonts/Vazirmatn-Regular.otf",
+            "./assets/fonts/Vazirmatn-Regular.woff",
+            "./assets/fonts/Vazirmatn-Regular.woff2",
             "./assets/fonts/Rezvan.ttf",
             "./assets/fonts/Atila.ttf",
             "./assets/fonts/A-Mosalas.ttf",
-            "./assets/fonts/Btitr.ttf",
+            "./assets/fonts/Btitr.ttf"
           ]
         }
       ]
